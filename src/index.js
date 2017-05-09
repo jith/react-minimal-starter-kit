@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, hashHistory } from 'react-router';
-import routes from './routes';
+import { render } from 'react-dom';
+import 'normalize.css';
+import './index.css';
+import Routes from './routes';
 
-ReactDOM.render(
-  <Router history={hashHistory} routes={routes} />,
+render(
+  Routes,
   document.getElementById('App')
 );

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import App from './components/App/App';
-import Helloreact from './components/Helloreact/Helloreact';
-import About from './components/About/About';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import Helloreact from './modules/Helloreact/Helloreact';
+import About from './modules/About/About';
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={Helloreact} />
-    <Route path="/about" component={About} />
-  </Route>
+  <Router>
+    <div>
+      <Route exact path="/" component={Helloreact}/>
+      <Route path="/about" component={About}/>
+    </div>
+  </Router>
 );

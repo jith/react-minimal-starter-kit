@@ -7,6 +7,7 @@ var server = new WebpackDevServer(compiler, {
   hot: true,
   inline: true,
   contentBase: "./src/",
+  historyApiFallback: true,
   stats: { colors: true }
 });
 server.listen(3000, 'localhost', function (err) {

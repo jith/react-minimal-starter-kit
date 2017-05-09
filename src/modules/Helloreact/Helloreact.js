@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import './Helloreact.css';
 
-var Welcome = React.createClass({
-  render() {
+function Welcome (){
     return(
       <div>
         <p><img src="assets/images/logo_small.png" alt="React Js"/></p>
@@ -12,8 +11,7 @@ var Welcome = React.createClass({
         <Link to={`/about`}>About</Link>
       </div>
     );
-  }
-});
+}
 
 export default class Helloreact extends Component {
   render() {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import './About.css';
 
-var AboutContent = React.createClass({
-  render() {
+function AboutContent (){
     return(
       <div>
         <h1>About</h1>
@@ -11,8 +10,7 @@ var AboutContent = React.createClass({
         <Link to={`/`}>Hello React !</Link>
       </div>
     );
-  }
-});
+}
 
 export default class About extends Component {
   render() {

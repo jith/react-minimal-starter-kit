@@ -2,47 +2,42 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ReloadPlugin = require('reload-html-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
   resolve: {
-    root: path.join(__dirname, './src')
-  },
-  resolveLoader: {
-    root: path.join(__dirname, './node_modules')
+    modules: [
+      path.join(__dirname, "./src"),
+      "./node_modules"
+    ]
   },
   entry: [
+    'react-hot-loader/patch',
     "webpack-dev-server/client?http://localhost:3000/",
     "webpack/hot/only-dev-server",
-    "./src/index.js"
+    "./src/dev.index.js"
   ],
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: '/build/'
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      inject: false
+      inject: true
     }),
     new ReloadPlugin(),
-    new ExtractTextPlugin("styles.css"),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader"
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+        use: ['style-loader', 'css-loader']
       }
     ]
   },

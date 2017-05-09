@@ -5,12 +5,19 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  resolve: {
+    modules: [
+      path.join(__dirname, "./src"),
+      "./node_modules"
+    ]
+  },
   entry: [
     "./src/index.js"
   ],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "/build/bundle.js"
+    filename: "build/bundle.js",
+    publicPath: './'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
@@ -18,12 +25,11 @@ module.exports = {
         warnings: false,
       },
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin("/build/styles.css"),
+    new ExtractTextPlugin("build/styles.css"),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      inject: false,
+      inject: true,
       minify: {
         collapseWhitespace: true
       }
@@ -37,15 +43,18 @@ module.exports = {
     }])
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader"
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader?minimize=true"
+        })
       }
     ]
   }
