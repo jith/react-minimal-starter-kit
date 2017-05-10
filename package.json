@@ -1,6 +1,6 @@
 {
   "name": "react-boilerplate",
-  "version": "0.2.0",
+  "version": "0.2.001",
   "description": "minimal react boilerplate with webpack hot module replacement",
   "main": "index.js",
   "scripts": {

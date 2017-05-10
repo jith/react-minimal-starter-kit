@@ -15,7 +15,7 @@ module.exports = {
     'react-hot-loader/patch',
     "webpack-dev-server/client?http://localhost:3000/",
     "webpack/hot/only-dev-server",
-    "./src/dev.index.js"
+    "./src/index.js"
   ],
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
