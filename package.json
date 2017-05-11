@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-minimal-starter-kit",
   "version": "0.2.001",
   "description": "minimal react boilerplate with webpack hot module replacement",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jith/react-boilerplate.git"
+    "url": "https://github.com/jith/react-minimal-starter-kit.git"
   },
   "keywords": [
     "minimal",
